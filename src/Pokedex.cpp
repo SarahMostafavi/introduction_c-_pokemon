@@ -9,6 +9,9 @@
 #include <sstream>
 #include <string>
 
+Pokedex* Pokedex::pinstance = nullptr;
+vector<string> Pokedex::arrayOfPokemonNames;
+vector<Pokemon*> SetOfPokemon::arrayOfPokemon;
 
 Pokedex::Pokedex(std::pmr::string fileName):SetOfPokemon() {
 

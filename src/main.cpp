@@ -24,15 +24,15 @@ int main() {
 
 
 
-    Pokedex* pinstance = Pokedex::getInstance("../data.pokedex.csv");
-    // Pokemon pokemon1 = pinstance->getPokemonById(1);
-    // InfoConsole::displayInfo(pokemon1);
-    // Pokemon pokemon2 = pinstance->getPokemonById(2);
-    // InfoConsole::displayInfo(pokemon2);
-    // Pokemon pokemon3 = pinstance->getPokemonByName("Bulbasaur");
-    // InfoConsole::displayInfo(pokemon3);
-    // Pokemon pokemon4 = pinstance->getPokemonByName("Ivysaur");
-    // InfoConsole::displayInfo(pokemon4);
+    Pokedex* pinstance = Pokedex::getInstance("../data/pokedex.csv");
+    Pokemon pokemon1 = pinstance->getPokemonById(0);
+    InfoConsole::displayInfo(pokemon1);
+    Pokemon pokemon2 = pinstance->getPokemonById(1);
+    InfoConsole::displayInfo(pokemon2);
+    Pokemon pokemon3 = pinstance->getPokemonByName("Bulbasaur");
+    InfoConsole::displayInfo(pokemon3);
+    Pokemon pokemon4 = pinstance->getPokemonByName("Ivysaur");
+    InfoConsole::displayInfo(pokemon4);
 
     return 0;
 }
