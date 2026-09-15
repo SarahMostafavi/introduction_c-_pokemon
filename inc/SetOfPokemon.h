@@ -10,9 +10,10 @@
 #include <vector>
 using std::vector;
 
+
 class SetOfPokemon {
     protected:
-    static vector<Pokemon*> arrayOfPokemon;
+    vector<Pokemon*> arrayOfPokemon;
 
     public:
 

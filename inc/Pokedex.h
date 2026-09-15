@@ -6,7 +6,9 @@
 #define TICTACTOE_POKEDEX_H
 #include "SetOfPokemon.h"
 
-
+/**
+ * The class contains all the pokemon and allows to get a copy of a pokemon given his name or id.
+ */
 class Pokedex : public SetOfPokemon{
     private:
     static Pokedex* pinstance;
@@ -14,9 +16,24 @@ class Pokedex : public SetOfPokemon{
     static vector<string> arrayOfPokemonNames;
 
     public:
+    /**
+     * Initialize the pokedex from the file and the array of pokemon names possible.
+     * @param fileName
+     */
     static Pokedex *getInstance(const std::pmr::string& fileName);
+
+    /**
+     * Create a copy of the pokemon associated to the id given.
+     * @param id
+     * @return
+     */
     Pokemon getPokemonById(int id) override;
 
+    /**
+     * Create a copy of the pokemon associated to the name given.
+     * @param name
+     * @return
+     */
     Pokemon getPokemonByName(string name) override;
 };
 

@@ -11,7 +11,7 @@ using std::string;
 class InfoConsole;
 
 /**
- * @brief Represents a Pokemon.
+ * Represents a Pokemon.
  * The Pokemon can attack and inflicts damages on another pokemon.
  * The class count the number of pokemon instantiated.
  **/
@@ -46,7 +46,7 @@ public:
     static int getNumberOfPokemons();
 
     /**
-     * @brief The pokemon attack another pokemon.
+     * The pokemon attack another pokemon.
      * The attack is successful if the attack value is greater than the defense of the other pokemon.
      *
      * @param anotherPokemon
@@ -55,7 +55,7 @@ public:
 
 
     /**
-     * @brief The pokemon inflicts damage on another pokemon.
+     * The pokemon inflicts damage on another pokemon.
      * The attacked pokemon die if his hit points are less than zero.
      *
      * @param anotherPokemon

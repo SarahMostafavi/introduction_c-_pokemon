@@ -11,20 +11,20 @@
 using std::string;
 
 /**
- * @brief The class display in the console information about pokemon's attacks.
+ *  The class display in the console information about pokemon's attacks.
  */
 class InfoConsole {
 public:
 
     /**
-     * @brief Display the information known about the pokemon
+     * Display the information known about the pokemon
      * @param pokemon
      */
     static void displayInfo(const Pokemon &pokemon);
 
 
     /**
-     * @brief Display that the pokemon is attacking another one
+     * Display that the pokemon is attacking another one
      * and tells if the attack is successful or not.
      *
      * @param isAttackSuccessful

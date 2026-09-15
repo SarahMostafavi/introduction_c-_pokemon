@@ -11,7 +11,6 @@
 
 Pokedex* Pokedex::pinstance = nullptr;
 vector<string> Pokedex::arrayOfPokemonNames;
-vector<Pokemon*> SetOfPokemon::arrayOfPokemon;
 
 Pokedex::Pokedex(std::pmr::string fileName):SetOfPokemon() {
 
@@ -48,27 +47,28 @@ Pokedex::Pokedex(std::pmr::string fileName):SetOfPokemon() {
 Pokedex *Pokedex::getInstance(const std::pmr::string& fileName) {
     if (pinstance == nullptr) {
         pinstance = new Pokedex(fileName);
-        for (Pokemon* pokemon : arrayOfPokemon) {
+        for (Pokemon* pokemon : pinstance->arrayOfPokemon) {
             arrayOfPokemonNames.push_back(pokemon->getName());
         }
     }
     return pinstance;
 }
 
+// Ajouter exception si id invalide
 Pokemon Pokedex::getPokemonById(int id){
-    return *arrayOfPokemon.at(id);
+    return Pokemon(*arrayOfPokemon.at(id));
 }
 
 
-//Pb si name n'existe pas
+
 Pokemon Pokedex::getPokemonByName(string name) {
     for (int id=0; id<arrayOfPokemonNames.size(); id++) {
         if (name == arrayOfPokemonNames.at(id)) {
-            return *arrayOfPokemon.at(id);
+            return Pokemon(*arrayOfPokemon.at(id));
         }
     }
-    throw "Pokemon name not found";
-
+    // Exception si le pokémon n'existe pas.
+    throw std::invalid_argument("Pokemon name" + name + " not found");
 }
 
 

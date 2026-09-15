@@ -4,35 +4,49 @@
 #include "../inc/Pokedex.h"
 
 int main() {
-    // // Test des constucteurs et destructeurs
-    // Pokemon bulbizarre = Pokemon(1,"Bulbizarre", 0,40,  30, 20, 10, 1);
-    // InfoConsole::displayInfo(bulbizarre);
-    //
-    // Pokemon bulbizarre2 = Pokemon(bulbizarre);
-    // InfoConsole::displayInfo(bulbizarre2);
-    // // Fin test des constructeurs et destructeurs
-    //
-    // // Test des attaques
-    // std::cout<<"Test attaque pokemon" <<std::endl;
-    // std::cout <<"Nombre de pokemons instancies : " << Pokemon::getNumberOfPokemons() << std::endl;
-    // Pokemon pokemonA(2,"A", 0,50,50, 20,10 ,1);
-    // Pokemon pokemonB(3,"B", 0,30,30, 40,30 ,1);
-    // pokemonA.attackPokemon(pokemonB);
-    // pokemonB.attackPokemon(pokemonA);
-    // pokemonB.attackPokemon(pokemonA);
-    // std::cout <<"Nombre de pokemons instancies : " << Pokemon::getNumberOfPokemons() << std::endl;
+    Pokedex* pokedex = Pokedex::getInstance("../data/pokedex.csv");
+    Pokemon* playerPokemon = nullptr;
+    Pokemon* opponentPokemon = nullptr;
+
+    //Choix du pokemon du joueur
+    while (playerPokemon == nullptr) {
+        std::cout << "Bonjour, choisissez votre pokemon (nom)" << std::endl;
+        string playerPokemonName;
+        std::cin >> playerPokemonName;
+        playerPokemon = new Pokemon(pokedex->getPokemonByName(playerPokemonName));
+    }
+
+    std::cout << "Voici les info sur votre pokemon :" << std::endl;
+    InfoConsole::displayInfo(*playerPokemon);
+    //Fin du choix du pokemon du joueur
 
 
+    // Choix du pokemon de l'adversaire
+    while (opponentPokemon == nullptr) {
+        std::cout << "Choisissez le pokemon de votre adversaire(nom)" << std::endl;
+        string opponentPokemonName;
+        std::cin >> opponentPokemonName;
+        opponentPokemon = new Pokemon(pokedex->getPokemonByName(opponentPokemonName));
+    }
+    std::cout << "Voici les info sur le pokemon de votre adversaire:" << std::endl;
 
-    Pokedex* pinstance = Pokedex::getInstance("../data/pokedex.csv");
-    Pokemon pokemon1 = pinstance->getPokemonById(0);
-    InfoConsole::displayInfo(pokemon1);
-    Pokemon pokemon2 = pinstance->getPokemonById(1);
-    InfoConsole::displayInfo(pokemon2);
-    Pokemon pokemon3 = pinstance->getPokemonByName("Bulbasaur");
-    InfoConsole::displayInfo(pokemon3);
-    Pokemon pokemon4 = pinstance->getPokemonByName("Ivysaur");
-    InfoConsole::displayInfo(pokemon4);
+    InfoConsole::displayInfo(*opponentPokemon);
+    // Fin du choix du pokemon de l'adversaire
+
+
+    // Combat entre les pokemon tant qu'aucun des des n'est mort
+    std::cout <<"Début du combat entre " << playerPokemon->getName() << " et " << opponentPokemon->getName() << std::endl;
+
+    while (playerPokemon->getHitPoint() > 0 && opponentPokemon->getHitPoint() > 0) {
+        playerPokemon->attackPokemon(*opponentPokemon);
+
+        if (opponentPokemon->getHitPoint() <= 0) {
+            break; // Le combat s'arrete si un pokemon meurt
+        }
+
+        opponentPokemon->attackPokemon(*playerPokemon);
+    }
+    // Fin du combat
 
     return 0;
 }
