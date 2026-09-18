@@ -6,6 +6,7 @@
 #define TICTACTOE_INFOCONSOLE_H
 
 
+#include <iostream>
 #include <string>
 #include "Pokemon.h"
 using std::string;
@@ -36,7 +37,7 @@ public:
 
 
     /**
-     * @brief Display the damage the pokemon inflicted to another pokemon
+     * Display the damage the pokemon inflicted to another pokemon
      * and if the pokemon attacked is dead or not.
      *
      * @param isAttackFatal
@@ -45,7 +46,15 @@ public:
      * @param damageInflicted
      */
     static void displaySuccessfulAttackInfo(
-        const bool &isAttackFatal, const Pokemon &attacker, const Pokemon &defender, const double &damageInflicted);
+        const bool &isAttackFatal, const Pokemon &attacker, const Pokemon &defender, double damageInflicted);
+
+    /**
+     * Display that the pokemon is healed and how many hitPoints healed.
+     * @param pokemon
+     * @param amountToHeal
+     */
+    static void displayHealInfo(const Pokemon &pokemon, double amountToHeal);
+
 };
 
 

@@ -9,8 +9,8 @@ using std::cout;
 
 int Pokemon::numberOfPokemons = 0;
 
-Pokemon::Pokemon(const int &id, const string &name, const int &evolution, const double &hitPointMax,
-    double hitPoint, double attack, double defense, const int &generation) :
+Pokemon::Pokemon(int id, const string &name, int evolution, double hitPointMax,
+    double hitPoint, double attack, double defense, int generation) :
     id(id), name(name), evolution(evolution), hitPointMax(hitPointMax), hitPoint(hitPoint),
     attack(attack), defense(defense), generation(generation) {
         numberOfPokemons ++;
@@ -85,3 +85,15 @@ bool Pokemon::inflictDamageOn(Pokemon &anotherPokemon) const {
 
     return isAttackFatal;
 }
+
+void Pokemon::healOf(double amountToHeal) {
+    if (amountToHeal > 0) {
+        hitPoint += amountToHeal;
+        if (hitPoint > hitPointMax) {
+            hitPoint = hitPointMax;
+        }
+        InfoConsole::displayHealInfo(*this, amountToHeal);
+    }
+}
+
+

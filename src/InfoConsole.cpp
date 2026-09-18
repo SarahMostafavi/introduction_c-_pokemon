@@ -27,11 +27,16 @@ void InfoConsole::displayAttackSuccessInfo(const bool &isAttackSuccessful, const
     }
 }
 
-void InfoConsole::displaySuccessfulAttackInfo(const bool &isAttackFatal, const Pokemon &attacker, const Pokemon &defender, const double &damageInflicted) {
+void InfoConsole::displaySuccessfulAttackInfo(const bool &isAttackFatal, const Pokemon &attacker, const Pokemon &defender, double damageInflicted) {
     cout << defender.getName() << " subit " << damageInflicted <<" degats." << endl;
     cout << defender.getName() << " a " << defender.getHitPoint() <<" PV." << endl;
     if (isAttackFatal) {
         cout << attacker.getName() << " a tue " << defender.getName() <<"." << endl;
         cout << attacker.getName() << " a gagne." << endl;
     }
+}
+
+void InfoConsole::displayHealInfo(const Pokemon &pokemon, double amountToHeal) {
+    cout << pokemon.getName() << " se soigne de " << amountToHeal <<" degats." << endl;
+    cout << pokemon.getName() << " a " << pokemon.getHitPoint() <<" PV." << endl;
 }

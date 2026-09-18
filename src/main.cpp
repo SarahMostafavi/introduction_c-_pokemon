@@ -13,7 +13,12 @@ int main() {
         std::cout << "Bonjour, choisissez votre pokemon (nom)" << std::endl;
         string playerPokemonName;
         std::cin >> playerPokemonName;
-        playerPokemon = new Pokemon(pokedex->getPokemonByName(playerPokemonName));
+        try{
+            playerPokemon = new Pokemon(pokedex->getPokemonByName(playerPokemonName));
+        }
+        catch (std::exception& e) {
+            std::cerr << "Le nom " << playerPokemonName << " n'est pas valide." << std::endl;
+        }
     }
 
     std::cout << "Voici les info sur votre pokemon :" << std::endl;
@@ -26,7 +31,14 @@ int main() {
         std::cout << "Choisissez le pokemon de votre adversaire(nom)" << std::endl;
         string opponentPokemonName;
         std::cin >> opponentPokemonName;
-        opponentPokemon = new Pokemon(pokedex->getPokemonByName(opponentPokemonName));
+
+        try{
+            opponentPokemon = new Pokemon(pokedex->getPokemonByName(opponentPokemonName));
+        }
+        catch (std::exception& e) {
+            std::cerr << "Le nom " << opponentPokemonName << " n'est pas valide." << std::endl;
+        }
+
     }
     std::cout << "Voici les info sur le pokemon de votre adversaire:" << std::endl;
 
@@ -35,7 +47,7 @@ int main() {
 
 
     // Combat entre les pokemon tant qu'aucun des des n'est mort
-    std::cout <<"Début du combat entre " << playerPokemon->getName() << " et " << opponentPokemon->getName() << std::endl;
+    std::cout <<"Debut du combat entre " << playerPokemon->getName() << " et " << opponentPokemon->getName() << std::endl;
 
     while (playerPokemon->getHitPoint() > 0 && opponentPokemon->getHitPoint() > 0) {
         playerPokemon->attackPokemon(*opponentPokemon);
@@ -45,6 +57,7 @@ int main() {
         }
 
         opponentPokemon->attackPokemon(*playerPokemon);
+        opponentPokemon->healOf(-5);
     }
     // Fin du combat
 

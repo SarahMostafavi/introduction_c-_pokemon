@@ -17,20 +17,20 @@ class InfoConsole;
  **/
 class Pokemon {
 private:
-    const int id;
+    int id;
     const string name;
     int evolution;
     double hitPointMax;
     double hitPoint;
     double attack;
     double defense;
-    const int generation;
+    int generation;
     static int numberOfPokemons;
 
 
 public:
     Pokemon() = delete;
-    Pokemon(const int &id, const string &name, const int &evolution, const double &hitPointMax, double hitPoint, double attack, double defense, const int &generation);
+    Pokemon(int id, const string &name, int evolution, double hitPointMax, double hitPoint, double attack, double defense, int generation);
     Pokemon(const Pokemon& anotherPokemon);
     ~Pokemon();
 
@@ -63,7 +63,7 @@ public:
      **/
     bool inflictDamageOn(Pokemon& anotherPokemon) const;
 
-
+    void healOf(double amountToHeal);
 };
 
 
