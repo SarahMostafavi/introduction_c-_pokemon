@@ -12,15 +12,15 @@
 class Pokedex : public SetOfPokemon{
     private:
     static Pokedex* pinstance;
-    Pokedex(std::pmr::string fileName);
     static vector<string> arrayOfPokemonNames;
+    Pokedex(string fileName);
 
     public:
     /**
      * Initialize the pokedex from the file and the array of pokemon names possible.
      * @param fileName
      */
-    static Pokedex *getInstance(const std::pmr::string& fileName);
+    static Pokedex*  getInstance(const string& fileName);
 
     /**
      * Create a copy of the pokemon associated to the id given.

@@ -5,7 +5,6 @@
 #ifndef TICTACTOE_POKEMON_H
 #define TICTACTOE_POKEMON_H
 
-
 #include <string>
 using std::string;
 class InfoConsole;
@@ -63,6 +62,11 @@ public:
      **/
     bool inflictDamageOn(Pokemon& anotherPokemon) const;
 
+    /**
+     * The pokemon is healed of amountTOHeal if the amount to heal is positive.
+     * The hitPoints of the pokemon can't be superior at the hitPointsMax.
+     * @param amountToHeal
+     */
     void healOf(double amountToHeal);
 };
 

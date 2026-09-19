@@ -33,7 +33,7 @@ public:
      * @param defender
      */
     static void displayAttackSuccessInfo(
-        const bool &isAttackSuccessful, const Pokemon &attacker, const Pokemon &defender);
+        bool isAttackSuccessful, const Pokemon &attacker, const Pokemon &defender);
 
 
     /**
@@ -46,7 +46,7 @@ public:
      * @param damageInflicted
      */
     static void displaySuccessfulAttackInfo(
-        const bool &isAttackFatal, const Pokemon &attacker, const Pokemon &defender, double damageInflicted);
+        bool isAttackFatal, const Pokemon &attacker, const Pokemon &defender, double damageInflicted);
 
     /**
      * Display that the pokemon is healed and how many hitPoints healed.

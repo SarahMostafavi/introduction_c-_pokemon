@@ -4,7 +4,7 @@
 #include "../inc/Pokedex.h"
 
 int main() {
-    Pokedex* pokedex = Pokedex::getInstance("../data/pokedex.csv");
+    auto pokedex = Pokedex::getInstance("data/pokedex.csv");
     Pokemon* playerPokemon = nullptr;
     Pokemon* opponentPokemon = nullptr;
 
@@ -48,18 +48,26 @@ int main() {
 
     // Combat entre les pokemon tant qu'aucun des des n'est mort
     std::cout <<"Debut du combat entre " << playerPokemon->getName() << " et " << opponentPokemon->getName() << std::endl;
+    bool isTheFightGoingToEnd = ((playerPokemon->getDefense() < opponentPokemon->getAttack()) || (opponentPokemon->getDefense() < playerPokemon->getAttack()));
+    if (isTheFightGoingToEnd) {
+        while (playerPokemon->getHitPoint() > 0 && opponentPokemon->getHitPoint() > 0) {
+            playerPokemon->attackPokemon(*opponentPokemon);
 
-    while (playerPokemon->getHitPoint() > 0 && opponentPokemon->getHitPoint() > 0) {
-        playerPokemon->attackPokemon(*opponentPokemon);
+            if (opponentPokemon->getHitPoint() <= 0) {
+                break; // Le combat s'arrete si un pokemon meurt
+            }
 
-        if (opponentPokemon->getHitPoint() <= 0) {
-            break; // Le combat s'arrete si un pokemon meurt
+            opponentPokemon->attackPokemon(*playerPokemon);
         }
+    }
 
-        opponentPokemon->attackPokemon(*playerPokemon);
-        opponentPokemon->healOf(-5);
+    else{
+        std::cout << "Ce combat n'a pas de fin, il y a egalite." << std::endl;
     }
     // Fin du combat
+
+    delete playerPokemon;
+    delete opponentPokemon;
 
     return 0;
 }

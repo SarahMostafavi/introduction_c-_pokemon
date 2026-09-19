@@ -20,14 +20,14 @@ void InfoConsole::displayInfo(const Pokemon &pokemon) {
     cout << "----  Fin info ----" << endl;
 }
 
-void InfoConsole::displayAttackSuccessInfo(const bool &isAttackSuccessful, const Pokemon &attacker, const Pokemon &defender) {
+void InfoConsole::displayAttackSuccessInfo(bool isAttackSuccessful, const Pokemon &attacker, const Pokemon &defender) {
     cout << attacker.getName() << " attaque " << defender.getName() <<"." << endl;
     if (!isAttackSuccessful) {
         cout << defender.getName() << " esquive." << endl;
     }
 }
 
-void InfoConsole::displaySuccessfulAttackInfo(const bool &isAttackFatal, const Pokemon &attacker, const Pokemon &defender, double damageInflicted) {
+void InfoConsole::displaySuccessfulAttackInfo(bool isAttackFatal, const Pokemon &attacker, const Pokemon &defender, double damageInflicted) {
     cout << defender.getName() << " subit " << damageInflicted <<" degats." << endl;
     cout << defender.getName() << " a " << defender.getHitPoint() <<" PV." << endl;
     if (isAttackFatal) {

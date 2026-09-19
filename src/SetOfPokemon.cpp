@@ -4,6 +4,13 @@
 
 #include "../inc/SetOfPokemon.h"
 #include "../inc/InfoConsole.h"
+#include "../inc/Pokemon.h"
+
+SetOfPokemon::~SetOfPokemon() {
+    for (Pokemon* pokemon : arrayOfPokemon) {
+        delete pokemon;
+    }
+}
 
 void SetOfPokemon::displayListOfPokemonById(const vector<int>& ListOfPokemonId) {
     for (int id : ListOfPokemonId) {
