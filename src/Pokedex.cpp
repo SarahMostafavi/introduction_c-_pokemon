@@ -10,7 +10,6 @@
 #include <string>
 
 Pokedex* Pokedex::pinstance = nullptr;
-vector<string> Pokedex::arrayOfPokemonNames;
 
 Pokedex::Pokedex(string fileName):SetOfPokemon() {
 
@@ -47,9 +46,6 @@ Pokedex::Pokedex(string fileName):SetOfPokemon() {
 Pokedex *Pokedex::getInstance(const string& fileName) {
     if (pinstance == nullptr) {
         pinstance = new Pokedex(fileName);
-        for (Pokemon* pokemon : pinstance->arrayOfPokemon) {
-            arrayOfPokemonNames.push_back(pokemon->getName());
-        }
     }
     return pinstance;
 }
@@ -62,9 +58,9 @@ Pokemon Pokedex::getPokemonById(int id){
 
 
 Pokemon Pokedex::getPokemonByName(string name) {
-    for (int id=0; id<arrayOfPokemonNames.size(); id++) {
-        if (name == arrayOfPokemonNames.at(id)) {
-            return Pokemon(*arrayOfPokemon.at(id));
+    for (Pokemon* pokemon : arrayOfPokemon) {
+        if (name == pokemon->getName()) {
+            return Pokemon(*pokemon);
         }
     }
     // Exception si le pokémon n'existe pas.

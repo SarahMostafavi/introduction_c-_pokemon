@@ -12,7 +12,6 @@
 class Pokedex : public SetOfPokemon{
     private:
     static Pokedex* pinstance;
-    static vector<string> arrayOfPokemonNames;
     Pokedex(string fileName);
 
     public:

@@ -2,9 +2,11 @@
 #include "../inc/Pokemon.h"
 #include "../inc/InfoConsole.h"
 #include "../inc/Pokedex.h"
+#include "../inc/PokemonParty.h"
 
 int main() {
     auto pokedex = Pokedex::getInstance("data/pokedex.csv");
+    PokemonParty* pokemonParty = new PokemonParty();
     Pokemon* playerPokemon = nullptr;
     Pokemon* opponentPokemon = nullptr;
 
@@ -20,6 +22,9 @@ int main() {
             std::cerr << "Le nom " << playerPokemonName << " n'est pas valide." << std::endl;
         }
     }
+
+    pokemonParty->addPokemon(*playerPokemon);
+    // InfoConsole::displayInfo(pokemonParty->getPokemonByName(playerPokemon->getName()));
 
     std::cout << "Voici les info sur votre pokemon :" << std::endl;
     InfoConsole::displayInfo(*playerPokemon);
