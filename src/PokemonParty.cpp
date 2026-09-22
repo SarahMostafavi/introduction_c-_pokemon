@@ -27,7 +27,13 @@ int PokemonParty::getNumberOfPokemonInPokemonParty() const {
 }
 
 Pokemon PokemonParty::getPokemonById(int id) {
-    return *arrayOfPokemon.at(id);
+    for (Pokemon* pokemonToGet : arrayOfPokemon) {
+        if (id == pokemonToGet->getId()) {
+            return Pokemon(*pokemonToGet);
+        }
+    }
+    // Exception si le pokémon n'est pas dans la pokemonParty.
+    throw std::invalid_argument("Vous ne possédez pas le pokemon d'id " + std::to_string(id) +".");
 }
 
 Pokemon PokemonParty::getPokemonByName(string name) {
@@ -36,6 +42,7 @@ Pokemon PokemonParty::getPokemonByName(string name) {
             return *pokemonToGet;
         }
     }
+    // Exception si le pokémon n'est pas dans la pokemonParty.
     throw std::invalid_argument("Vous ne possédez pas le pokemon " + name + ".");
 }
 

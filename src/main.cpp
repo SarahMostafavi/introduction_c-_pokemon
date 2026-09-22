@@ -3,10 +3,13 @@
 #include "../inc/InfoConsole.h"
 #include "../inc/Pokedex.h"
 #include "../inc/PokemonParty.h"
+#include "../inc/PokemonTeam.h"
 
 int main() {
     auto pokedex = Pokedex::getInstance("data/pokedex.csv");
     PokemonParty* pokemonParty = new PokemonParty();
+    PokemonTeam* pokemonTeam = new PokemonTeam();
+
     Pokemon* playerPokemon = nullptr;
     Pokemon* opponentPokemon = nullptr;
 
@@ -71,8 +74,14 @@ int main() {
     }
     // Fin du combat
 
+    pokemonTeam->putPokemonFromPokemonPartyInPosition(*playerPokemon, *pokemonParty, 0);
+
+
+
     delete playerPokemon;
     delete opponentPokemon;
+    delete pokemonParty;
+    delete pokemonTeam;
 
     return 0;
 }

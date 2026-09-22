@@ -16,5 +16,7 @@ add_executable(tictactoe
         inc/Pokedex.h
         src/PokemonParty.cpp
         inc/PokemonParty.h
+        src/PokemonTeam.cpp
+        inc/PokemonTeam.h
 )
 
