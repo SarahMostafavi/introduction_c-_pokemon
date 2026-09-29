@@ -5,10 +5,11 @@
 #ifndef TICTACTOE_POKEMONPARTY_H
 #define TICTACTOE_POKEMONPARTY_H
 #include "SetOfPokemon.h"
+#include "InfoConsole.h"
 
 /**
- * Represent the set of the player pokemon.
- * We can add or remove a pokemon of the set of the player.
+ * Represent the set of the pokemon owned by a person.
+ * We can add or remove a pokemon of this set.
  */
 class PokemonParty : public SetOfPokemon{
     public:
@@ -45,6 +46,13 @@ class PokemonParty : public SetOfPokemon{
      * @return
      */
     Pokemon getPokemonByName(string name) override;
+
+    /**
+     * Say if the pokemon is in the party
+     * @param pokemonToCheck
+     * @return bool
+     */
+    bool isPokemonInThePokemonParty(const Pokemon& pokemonToCheck) const;
 
 };
 

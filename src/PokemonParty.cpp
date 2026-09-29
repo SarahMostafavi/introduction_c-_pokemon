@@ -10,6 +10,7 @@ PokemonParty::PokemonParty(){}
 
 void PokemonParty::addPokemon(const Pokemon& pokemon) {
     arrayOfPokemon.push_back(new Pokemon(pokemon));
+    InfoConsole::displayPokemonAddedInThePartyMessage(pokemon);
 }
 
 void PokemonParty::removePokemon(const Pokemon &pokemon) {
@@ -17,6 +18,7 @@ void PokemonParty::removePokemon(const Pokemon &pokemon) {
         if (arrayOfPokemon.at(i)->getName() == pokemon.getName()) {
             delete arrayOfPokemon.at(i);
             arrayOfPokemon.erase(arrayOfPokemon.begin() + i);
+            InfoConsole::displayPokemonRemovedFromThePartyMessage(pokemon);
             break;
         }
     }
@@ -44,5 +46,15 @@ Pokemon PokemonParty::getPokemonByName(string name) {
     }
     // Exception si le pokémon n'est pas dans la pokemonParty.
     throw std::invalid_argument("Vous ne possédez pas le pokemon " + name + ".");
+}
+
+bool PokemonParty::isPokemonInThePokemonParty(const Pokemon &pokemonToCheck) const {
+    bool isPokemonInTheParty = false;
+    for (Pokemon* pokemon :arrayOfPokemon) {
+        if (pokemon->getId() == pokemonToCheck.getId()) {
+            isPokemonInTheParty = true;
+        }
+    }
+    return isPokemonInTheParty;
 }
 

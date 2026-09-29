@@ -55,6 +55,30 @@ public:
      */
     static void displayHealInfo(const Pokemon &pokemon, double amountToHeal);
 
+    /**
+     * Display the message saying the pokemon has been added to the pokemonParty.
+     * @param pokemon
+     */
+    static void displayPokemonAddedInThePartyMessage(const Pokemon& pokemon);
+
+    /**
+     * Display the message saying the pokemon has been removed from the pokemonParty.
+     * @param pokemon
+     */
+    static void displayPokemonRemovedFromThePartyMessage(const Pokemon& pokemon);
+
+    /**
+     * Display the message saying the pokemon has been added to the Team.
+     * @param pokemon
+     */
+    static void displayPokemonAddedInTheTeamMessage(const Pokemon &pokemon);
+
+    /**
+     * Display the the info about the pokemon at the position in the team.
+     * @param pokemon
+     * @param position
+     */
+    static void displayPokemonAtPositionInTheTeamInfo(const Pokemon * pokemon, int position);
 };
 
 

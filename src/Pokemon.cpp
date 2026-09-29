@@ -4,21 +4,19 @@
 
 #include "../inc/Pokemon.h"
 #include "../inc/InfoConsole.h"
-#include <iostream>
-using std::cout;
 
 int Pokemon::numberOfPokemons = 0;
 
-Pokemon::Pokemon(int id, const string &name, int evolution, double hitPointMax,
-    double hitPoint, double attack, double defense, int generation) :
-    id(id), name(name), evolution(evolution), hitPointMax(hitPointMax), hitPoint(hitPoint),
-    attack(attack), defense(defense), generation(generation) {
+Pokemon::Pokemon(int id, const string &name, double hitPointMax,
+    double hitPoint, double attack, double defense) :
+    id(id), name(name), hitPointMax(hitPointMax), hitPoint(hitPoint),
+    attack(attack), defense(defense) {
         numberOfPokemons ++;
 }
 
 Pokemon::Pokemon(const Pokemon &anotherPokemon) : id(anotherPokemon.id),name(anotherPokemon.name),
-    evolution(anotherPokemon.evolution), hitPointMax(anotherPokemon.hitPointMax), hitPoint(anotherPokemon.hitPoint),
-    attack(anotherPokemon.attack), defense(anotherPokemon.defense),generation(anotherPokemon.generation) {
+    hitPointMax(anotherPokemon.hitPointMax), hitPoint(anotherPokemon.hitPoint),attack(anotherPokemon.attack),
+    defense(anotherPokemon.defense) {
         numberOfPokemons ++;
 }
 
@@ -36,10 +34,6 @@ string Pokemon::getName() const {
     return name;
 }
 
-int Pokemon::getEvolution() const {
-    return evolution;
-}
-
 double Pokemon::getHitPointMax() const {
     return hitPointMax;
 }
@@ -54,10 +48,6 @@ double Pokemon::getAttack() const {
 
 double Pokemon::getDefense() const {
     return defense;
-}
-
-int Pokemon::getGeneration() const {
-    return generation;
 }
 
 int Pokemon::getNumberOfPokemons() {

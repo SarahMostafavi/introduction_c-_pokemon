@@ -38,8 +38,8 @@ Pokedex::Pokedex(string fileName):SetOfPokemon() {
         double defenseValue = std::stod(lineData.at(7));
         int generation = std::stoi(lineData.at(11));
 
-        arrayOfPokemon.push_back(new Pokemon(id,lineData.at(1),0,
-            hitPoint, hitPoint,attackValue, defenseValue,generation));
+        arrayOfPokemon.push_back(new Pokemon(id,lineData.at(1),
+            hitPoint, hitPoint,attackValue, defenseValue));
     }
 }
 

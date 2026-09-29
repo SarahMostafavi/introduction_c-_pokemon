@@ -11,15 +11,21 @@ PokemonTeam::PokemonTeam() {
 }
 
 void PokemonTeam::putPokemonFromPokemonPartyInPosition(const Pokemon &pokemon, PokemonParty& pokemonParty, int position) {
-    if (position>=0 && position<6) {
+    if (!isPositionValid(position)) {
+        throw std::out_of_range("La position n° "+std::to_string(position)+" n'existe pas. Elle doit etre entre 0 et 5.");
+    }
+    else if (!pokemonParty.isPokemonInThePokemonParty(pokemon)) {
+        throw std::out_of_range("Le pokemon à ajouter "+ pokemon.getName() +" n'est pas dans la pokemon party");
+
+    }
+    else {
         if (arrayOfPokemon.at(position) != nullptr) {
             sendPokemonToPokemonParty(*arrayOfPokemon.at(position), pokemonParty);
             removePokemonAtPositionFromTheTeam(position);
         }
         arrayOfPokemon.at(position) = new Pokemon(pokemon);
-    }
-    else {
-        throw std::out_of_range("La position n° "+std::to_string(position)+" n'existe pas. Elle doit etre entre 0 et 5.");
+        pokemonParty.removePokemon(pokemon);
+        InfoConsole::displayPokemonAddedInTheTeamMessage(pokemon);
     }
 }
 
@@ -35,7 +41,7 @@ void PokemonTeam::sendPokemonToPokemonParty(const Pokemon &pokemon, PokemonParty
 Pokemon PokemonTeam::getPokemonById(int id) {
     for (Pokemon* pokemonToGet : arrayOfPokemon) {
         if (pokemonToGet != nullptr && id == pokemonToGet->getId()) {
-            return Pokemon(*pokemonToGet);
+            return *pokemonToGet;
         }
     }
     // Exception si le pokémon n'est pas dans la pokemonParty.
@@ -51,4 +57,15 @@ Pokemon PokemonTeam::getPokemonByName(string name) {
     throw std::invalid_argument("Vous ne possédez pas le pokemon " + name + ".");
 }
 
+bool PokemonTeam::isPositionValid(int position) {
+    return position>=0 && position<6;
+}
+
+void PokemonTeam::displayInfoTeam() const {
+    int position = 0;
+    for (const Pokemon* pokemon : arrayOfPokemon) {
+        InfoConsole::displayPokemonAtPositionInTheTeamInfo(pokemon,position);
+        position++;
+    }
+}
 

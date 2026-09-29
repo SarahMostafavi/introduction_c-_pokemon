@@ -51,6 +51,18 @@ class PokemonTeam : public SetOfPokemon{
     * @return
     */
     Pokemon getPokemonByName(string name) override;
+
+    /**
+     * Says if the position given is valid for the team is valid
+     * @param position
+     * @return
+     */
+    static bool isPositionValid(int position);
+
+    /**
+     * Display the information of each pokemon in the team
+     */
+    void displayInfoTeam() const;
 };
 
 

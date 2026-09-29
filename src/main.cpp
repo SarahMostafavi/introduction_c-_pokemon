@@ -7,8 +7,8 @@
 
 int main() {
     auto pokedex = Pokedex::getInstance("data/pokedex.csv");
-    PokemonParty* pokemonParty = new PokemonParty();
-    PokemonTeam* pokemonTeam = new PokemonTeam();
+    auto* pokemonParty = new PokemonParty();
+    auto* pokemonTeam = new PokemonTeam();
 
     Pokemon* playerPokemon = nullptr;
     Pokemon* opponentPokemon = nullptr;
@@ -27,7 +27,7 @@ int main() {
     }
 
     pokemonParty->addPokemon(*playerPokemon);
-    // InfoConsole::displayInfo(pokemonParty->getPokemonByName(playerPokemon->getName()));
+    pokemonTeam->putPokemonFromPokemonPartyInPosition(*playerPokemon, *pokemonParty,0);
 
     std::cout << "Voici les info sur votre pokemon :" << std::endl;
     InfoConsole::displayInfo(*playerPokemon);
@@ -72,12 +72,15 @@ int main() {
     else{
         std::cout << "Ce combat n'a pas de fin, il y a egalite." << std::endl;
     }
+
+    if (opponentPokemon->getHitPoint() == 0) {
+        pokemonParty->addPokemon(*opponentPokemon);
+        pokemonTeam->putPokemonFromPokemonPartyInPosition(*opponentPokemon, *pokemonParty,0);
+    }
+
+    pokemonTeam->displayInfoTeam();
+    
     // Fin du combat
-
-    pokemonTeam->putPokemonFromPokemonPartyInPosition(*playerPokemon, *pokemonParty, 0);
-
-
-
     delete playerPokemon;
     delete opponentPokemon;
     delete pokemonParty;

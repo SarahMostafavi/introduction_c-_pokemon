@@ -19,7 +19,7 @@ void SetOfPokemon::displayListOfPokemonById(const vector<int>& ListOfPokemonId) 
 }
 
 void SetOfPokemon::displayListOfPokemonByName(const vector<string>& ListOfPokemonName) {
-    for (string name : ListOfPokemonName) {
+    for (const string& name : ListOfPokemonName) {
         InfoConsole::displayInfo(getPokemonByName(name));
     }
 }

@@ -18,29 +18,25 @@ class Pokemon {
 private:
     int id;
     const string name;
-    int evolution;
     double hitPointMax;
     double hitPoint;
     double attack;
     double defense;
-    int generation;
     static int numberOfPokemons;
 
 
 public:
     Pokemon() = delete;
-    Pokemon(int id, const string &name, int evolution, double hitPointMax, double hitPoint, double attack, double defense, int generation);
+    Pokemon(int id, const string &name, double hitPointMax, double hitPoint, double attack, double defense);
     Pokemon(const Pokemon& anotherPokemon);
     ~Pokemon();
 
     int getId() const;
     string getName() const;
-    int getEvolution() const;
     double getHitPointMax() const;
     double getHitPoint() const;
     double getAttack() const;
     double getDefense() const;
-    int getGeneration() const;
 
     static int getNumberOfPokemons();
 
