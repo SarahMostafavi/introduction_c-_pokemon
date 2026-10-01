@@ -4,8 +4,23 @@
 #include "../inc/Pokedex.h"
 #include "../inc/PokemonParty.h"
 #include "../inc/PokemonTeam.h"
+#include <SFML/Graphics.hpp>
 
 int main() {
+    // Affichage sfml
+    sf::RenderWindow window(sf::VideoMode({800, 600}), "Hello SFML");
+    sf::CircleShape shape(100.f);
+    shape.setFillColor(sf::Color::Green);
+    while (window.isOpen()) {
+        while (const auto event = window.pollEvent()) {
+            if (event->is<sf::Event::Closed>())
+                window.close();
+        }
+        window.clear();
+        window.draw(shape);
+        window.display();
+    }
+    // fin affichage sfml
     auto pokedex = Pokedex::getInstance("data/pokedex.csv");
     auto* pokemonParty = new PokemonParty();
     auto* pokemonTeam = new PokemonTeam();
@@ -79,7 +94,7 @@ int main() {
     }
 
     pokemonTeam->displayInfoTeam();
-    
+
     // Fin du combat
     delete playerPokemon;
     delete opponentPokemon;

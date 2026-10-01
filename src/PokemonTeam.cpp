@@ -57,6 +57,17 @@ Pokemon PokemonTeam::getPokemonByName(string name) {
     throw std::invalid_argument("Vous ne possédez pas le pokemon " + name + ".");
 }
 
+Pokemon * PokemonTeam::getPokemonAtPosition(int position) const {
+    if (!isPositionValid(position)) {
+        throw std::out_of_range("La position n° "+std::to_string(position)+" n'existe pas. Elle doit etre entre 0 et 5.");
+    }
+
+    if (arrayOfPokemon.at(position) == nullptr) {
+        throw std::out_of_range("L'emplacement ["+std::to_string(position)+"] est vide.");
+    }
+    return arrayOfPokemon.at(position);
+}
+
 bool PokemonTeam::isPositionValid(int position) {
     return position>=0 && position<6;
 }

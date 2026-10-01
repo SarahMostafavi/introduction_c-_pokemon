@@ -2,6 +2,15 @@ cmake_minimum_required(VERSION 3.21)
 project(tictactoe)
 set(CMAKE_CXX_STANDARD 17)
 
+include(FetchContent)
+FetchContent_Declare(
+        SFML
+        GIT_REPOSITORY https://github.com/SFML/SFML.git
+        GIT_TAG 3.1.0
+)
+FetchContent_MakeAvailable(SFML)
+
+
 file(COPY ${CMAKE_SOURCE_DIR}/data DESTINATION ${CMAKE_BINARY_DIR})
 
 add_executable(tictactoe
@@ -18,5 +27,10 @@ add_executable(tictactoe
         inc/PokemonParty.h
         src/PokemonTeam.cpp
         inc/PokemonTeam.h
+        src/Player.cpp
+        inc/Player.h
 )
+
+target_link_libraries(tictactoe PRIVATE SFML::Graphics SFML::Window SFML::System SFML::Audio)
+
 
