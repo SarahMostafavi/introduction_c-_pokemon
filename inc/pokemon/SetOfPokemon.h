@@ -10,7 +10,9 @@
 #include <vector>
 using std::vector;
 
-
+/**
+ * Abstract class describing sets of pokemons.
+ */
 class SetOfPokemon {
     protected:
     vector<Pokemon*> arrayOfPokemon;

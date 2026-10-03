@@ -2,7 +2,7 @@
 // Created by 33651 on 20/09/2026.
 //
 
-#include "../inc/PokemonTeam.h"
+#include "../../inc/pokemon/PokemonTeam.h"
 
 #include <stdexcept>
 
@@ -25,7 +25,7 @@ void PokemonTeam::putPokemonFromPokemonPartyInPosition(const Pokemon &pokemon, P
         }
         arrayOfPokemon.at(position) = new Pokemon(pokemon);
         pokemonParty.removePokemon(pokemon);
-        InfoConsole::displayPokemonAddedInTheTeamMessage(pokemon);
+        InfoConsolePokemon::displayPokemonAddedInTheTeamMessage(pokemon);
     }
 }
 
@@ -75,7 +75,7 @@ bool PokemonTeam::isPositionValid(int position) {
 void PokemonTeam::displayInfoTeam() const {
     int position = 0;
     for (const Pokemon* pokemon : arrayOfPokemon) {
-        InfoConsole::displayPokemonAtPositionInTheTeamInfo(pokemon,position);
+        InfoConsolePokemon::displayPokemonAtPositionInTheTeamInfo(pokemon,position);
         position++;
     }
 }

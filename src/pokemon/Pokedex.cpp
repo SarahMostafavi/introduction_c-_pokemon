@@ -2,7 +2,7 @@
 // Created by 33651 on 14/09/2026.
 //
 
-#include "../inc/Pokedex.h"
+#include "../../inc/pokemon/Pokedex.h"
 
 #include <fstream>
 #include <iostream>
@@ -13,7 +13,7 @@ Pokedex* Pokedex::pinstance = nullptr;
 
 Pokedex::Pokedex(string fileName):SetOfPokemon() {
 
-    std::cout << "*** Constructeur du Pokedex ***" << std::endl;
+    std::cout << "~~~ Constructeur du Pokedex ~~~" << std::endl;
 
     std::ifstream file((fileName.data()));
     if(!file.is_open()){

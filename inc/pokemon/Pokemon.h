@@ -7,7 +7,7 @@
 
 #include <string>
 using std::string;
-class InfoConsole;
+class InfoConsolePokemon;
 
 /**
  * Represents a Pokemon.

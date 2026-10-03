@@ -2,7 +2,7 @@
 // Created by 33651 on 18/09/2026.
 //
 
-#include "../inc/PokemonParty.h"
+#include "../../inc/pokemon/PokemonParty.h"
 
 #include <stdexcept>
 
@@ -10,7 +10,7 @@ PokemonParty::PokemonParty(){}
 
 void PokemonParty::addPokemon(const Pokemon& pokemon) {
     arrayOfPokemon.push_back(new Pokemon(pokemon));
-    InfoConsole::displayPokemonAddedInThePartyMessage(pokemon);
+    InfoConsolePokemon::displayPokemonAddedInThePartyMessage(pokemon);
 }
 
 void PokemonParty::removePokemon(const Pokemon &pokemon) {
@@ -18,7 +18,7 @@ void PokemonParty::removePokemon(const Pokemon &pokemon) {
         if (arrayOfPokemon.at(i)->getName() == pokemon.getName()) {
             delete arrayOfPokemon.at(i);
             arrayOfPokemon.erase(arrayOfPokemon.begin() + i);
-            InfoConsole::displayPokemonRemovedFromThePartyMessage(pokemon);
+            InfoConsolePokemon::displayPokemonRemovedFromThePartyMessage(pokemon);
             break;
         }
     }

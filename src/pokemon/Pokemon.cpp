@@ -2,8 +2,8 @@
 // Created by 33651 on 14/09/2026.
 //
 
-#include "../inc/Pokemon.h"
-#include "../inc/InfoConsole.h"
+#include "../../inc/pokemon/Pokemon.h"
+#include "../../inc/pokemon/InfoConsolePokemon.h"
 
 int Pokemon::numberOfPokemons = 0;
 
@@ -56,7 +56,7 @@ int Pokemon::getNumberOfPokemons() {
 
 void Pokemon::attackPokemon(Pokemon &anotherPokemon) const{
     const bool isAttackSuccessful = (attack > anotherPokemon.defense);
-    InfoConsole::displayAttackSuccessInfo(isAttackSuccessful, *this, anotherPokemon);
+    InfoConsolePokemon::displayAttackSuccessInfo(isAttackSuccessful, *this, anotherPokemon);
     if (isAttackSuccessful) {
         bool isAttackFatal = this->inflictDamageOn(anotherPokemon);
     }
@@ -71,7 +71,7 @@ bool Pokemon::inflictDamageOn(Pokemon &anotherPokemon) const {
     else {
         anotherPokemon.hitPoint -= damage;
     }
-    InfoConsole::displaySuccessfulAttackInfo(isAttackFatal, *this,anotherPokemon, damage);
+    InfoConsolePokemon::displaySuccessfulAttackInfo(isAttackFatal, *this,anotherPokemon, damage);
 
     return isAttackFatal;
 }
@@ -82,7 +82,7 @@ void Pokemon::healOf(double amountToHeal) {
         if (hitPoint > hitPointMax) {
             hitPoint = hitPointMax;
         }
-        InfoConsole::displayHealInfo(*this, amountToHeal);
+        InfoConsolePokemon::displayHealInfo(*this, amountToHeal);
     }
 }
 

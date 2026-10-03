@@ -14,7 +14,7 @@ using std::string;
 /**
  *  The class display in the console information about pokemon's attacks.
  */
-class InfoConsole {
+class InfoConsolePokemon {
 public:
 
     /**

@@ -5,7 +5,7 @@
 #ifndef TICTACTOE_POKEMONPARTY_H
 #define TICTACTOE_POKEMONPARTY_H
 #include "SetOfPokemon.h"
-#include "InfoConsole.h"
+#include "InfoConsolePokemon.h"
 
 /**
  * Represent the set of the pokemon owned by a person.
