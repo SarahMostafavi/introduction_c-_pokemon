@@ -38,7 +38,7 @@ Pokemon PokemonParty::getPokemonById(int id) {
     throw std::invalid_argument("Vous ne possédez pas le pokemon d'id " + std::to_string(id) +".");
 }
 
-Pokemon PokemonParty::getPokemonByName(string name) {
+Pokemon PokemonParty::getPokemonByName(const string name) {
     for (Pokemon* pokemonToGet : arrayOfPokemon) {
         if (pokemonToGet->getName() == name) {
             return *pokemonToGet;
@@ -48,13 +48,29 @@ Pokemon PokemonParty::getPokemonByName(string name) {
     throw std::invalid_argument("Vous ne possédez pas le pokemon " + name + ".");
 }
 
+Pokemon PokemonParty::getPokemonByIndex(int index) const {
+    if (0<=index && index < arrayOfPokemon.size()) {
+        return *arrayOfPokemon.at(index);
+    }
+    throw std::invalid_argument("Index does not exist in the party.");
+}
+
 bool PokemonParty::isPokemonInThePokemonParty(const Pokemon &pokemonToCheck) const {
-    bool isPokemonInTheParty = false;
-    for (Pokemon* pokemon :arrayOfPokemon) {
+    for (Pokemon* pokemon : arrayOfPokemon) {
         if (pokemon->getId() == pokemonToCheck.getId()) {
-            isPokemonInTheParty = true;
+            return true;
         }
     }
-    return isPokemonInTheParty;
+    return false;
+}
+
+bool PokemonParty::isPokemonPartyEmpty() const {
+    return (arrayOfPokemon.empty());
+}
+
+void PokemonParty::displayInfoParty() const {
+    for (int i = 0; i < arrayOfPokemon.size(); i++) {
+        InfoConsolePokemon::displayPokemonAtPositionInThePartyInfo(arrayOfPokemon.at(i), i);
+    }
 }
 

@@ -21,10 +21,10 @@ RoomEvent MenuRoom::runRoom(GameEngine &engine) {
         std::cout << "Pour quitter le jeu entrez 'q' " << std::endl;
         std::cin >> userInput;
         if (userInput == "j") {
-            return RoomEvent::PlayGame;
+            return RoomEvent::PLAY_GAME;
         }
         if (userInput == "q") {
-            return RoomEvent::QuitGame;
+            return RoomEvent::QUIT_GAME;
         }
         else {
             std::cerr << "L'entree '" << userInput << "' n'est pas valide!" << std::endl;

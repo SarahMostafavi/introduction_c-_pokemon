@@ -5,19 +5,25 @@
 #include "../inc/GameEngine.h"
 
 #include <iostream>
-
 #include "../inc/room/MenuRoom.h"
 #include "../inc/room/StartersRoom.h"
+#include "../inc/room/CenterRoom.h"
 
 Room * GameEngine::decideNextRoom(RoomEvent event) {
     switch (event) {
-        case RoomEvent::PlayGame:
+        case RoomEvent::PLAY_GAME:
             return new StartersRoom();
-        case RoomEvent::QuitGame:
+        case RoomEvent::QUIT_GAME:
             std::cout<<"~~~ End of game ~~~"<<std::endl;
             return nullptr;
-        case RoomEvent::StartersChosen:
+        case RoomEvent::ENTER_CENTER:
             std::cout<<"~~~ Starters are selected of game ~~~"<<std::endl;
+            return new CenterRoom();
+        case RoomEvent::START_EXPLORATION:
+            std::cout<<"~~~ Starts Exploration ~~~"<<std::endl;
+            return nullptr;
+        case RoomEvent::START_ARENA:
+            std::cout<<"~~~ Starts Arena ~~~"<<std::endl;
             return nullptr;
         default:
             return nullptr;

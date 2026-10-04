@@ -64,3 +64,9 @@ void InfoConsolePokemon::displayPokemonAtPositionInTheTeamInfo(const Pokemon *po
         cout <<"------------- Fin Equipe -----------------" << endl;
     }
 }
+
+void InfoConsolePokemon::displayPokemonAtPositionInThePartyInfo(const Pokemon *pokemon, int positionInParty) {
+    cout << "[" << positionInParty+1 << "]" << endl;
+    displayInfo(*pokemon);
+
+}

@@ -5,7 +5,7 @@
 #ifndef TICTACTOE_ROOM_H
 #define TICTACTOE_ROOM_H
 
-enum class RoomEvent { PlayGame, QuitGame, StartersChosen };
+enum class RoomEvent { PLAY_GAME, QUIT_GAME, ENTER_CENTER, START_EXPLORATION, START_ARENA };
 
 class GameEngine;
 

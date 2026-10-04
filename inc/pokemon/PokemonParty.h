@@ -48,11 +48,29 @@ class PokemonParty : public SetOfPokemon{
     Pokemon getPokemonByName(string name) override;
 
     /**
+     * Get the pokemon at positon index in the setOfPokemon.
+     * @param index
+     * @return
+     */
+    Pokemon getPokemonByIndex(int index) const;
+
+    /**
      * Say if the pokemon is in the party
      * @param pokemonToCheck
      * @return bool
      */
     bool isPokemonInThePokemonParty(const Pokemon& pokemonToCheck) const;
+
+    /**
+     * Says if the party is empty or not.
+     * @return
+     */
+    bool isPokemonPartyEmpty() const;
+
+    /**
+     * Display the information of each pokemon in the party
+     */
+    void displayInfoParty() const;
 
 };
 

@@ -79,6 +79,13 @@ public:
      * @param position
      */
     static void displayPokemonAtPositionInTheTeamInfo(const Pokemon * pokemon, int position);
+
+    /**
+     * Display the informations about the pokemon at position position in the party.
+     * @param pokemon
+     * @param positionInParty
+     */
+    static void displayPokemonAtPositionInThePartyInfo(const Pokemon *pokemon, int positionInParty);
 };
 
 

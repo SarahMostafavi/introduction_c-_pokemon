@@ -25,7 +25,7 @@ RoomEvent StartersRoom::runRoom(GameEngine &engine) {
         nameOfStartersSelected.at(i) = startersGenArray.at(i).at(indexPokemonSelected);
         addStarterToParty(engine, pokedex, nameOfStartersSelected.at(i));
     }
-    return RoomEvent::StartersChosen;
+    return RoomEvent::ENTER_CENTER;
 }
 
 int StartersRoom::askUserToChooseStarter(int generationIndex) const {
