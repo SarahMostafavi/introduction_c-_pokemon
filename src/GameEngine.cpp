@@ -38,7 +38,7 @@ Player& GameEngine::getPlayer() {
 
 void GameEngine::run() {
     while (currentRoom != nullptr) {
-        RoomEvent event = currentRoom->runRoom(*this);
+        auto event = currentRoom->runRoom(*this);
         Room* next = decideNextRoom(event);
         delete currentRoom;
         currentRoom = next;

@@ -104,8 +104,8 @@ bool Battle::isBattleOver() const {
 }
 
 bool Battle::isTheBattleGoingToEnd() const {
-    bool canOpponentPokemonWin = player.getActivePokemon().getDefense() < opponentPokemon.getAttack();
-    bool canPlayerPokemonWin = opponentPokemon.getDefense() < player.getActivePokemon().getAttack();
+    auto canOpponentPokemonWin = player.getActivePokemon().getDefense() < opponentPokemon.getAttack();
+    auto canPlayerPokemonWin = opponentPokemon.getDefense() < player.getActivePokemon().getAttack();
     return canOpponentPokemonWin || canPlayerPokemonWin;
 }
 
