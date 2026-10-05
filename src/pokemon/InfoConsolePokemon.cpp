@@ -70,3 +70,7 @@ void InfoConsolePokemon::displayPokemonAtPositionInThePartyInfo(const Pokemon *p
     displayInfo(*pokemon);
 
 }
+
+void InfoConsolePokemon::healAllPokemonOfTheTeam(){
+    cout << "Tous les pokemons de l'equipe sont soignes." << endl;
+}

@@ -16,13 +16,11 @@ class CenterRoom : public Room{
     private:
     const int NUMBER_OF_HEAL_POTIONS_GET = 3;
     const int NUMBER_OF_POKEBALLS_GET = 1;
-    public:
-    CenterRoom();
 
     /**
-     * Ask the player if he wants to modify the Team and modify it.
-     * @param engine
-     */
+    * Ask the player if he wants to modify the Team and modify it.
+    * @param engine
+    */
     void modifyPlayerTeam(GameEngine& engine) const;
 
     /**
@@ -64,6 +62,9 @@ class CenterRoom : public Room{
      * @return the event the player choosed to do
      */
     RoomEvent doActionInCenterRoom(GameEngine& engine, int indexActionToDo) const ;
+
+    public:
+    CenterRoom();
 
     /**
      * Ask the player what action wants to do in the pokemon center and do the action.

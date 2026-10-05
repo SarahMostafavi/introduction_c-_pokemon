@@ -11,8 +11,8 @@
 #include <string>
 
 /**
- * Class representing the state where we choose 3 starters of pokemon.
- * The options of starters are the starters of the 3 first generations.
+ * Class representing the state where we choose 4 starters of pokemon.
+ * The options of starters are the starters of the 3 first generations and 3 starters more powerful
  */
 class StartersRoom : public Room {
 private:
@@ -21,19 +21,10 @@ private:
     const std::vector<vector<string>> startersGenArray = {
         {"Bulbasaur", "Charmander", "Squirtle"},
         {"Chikorita", "Cyndaquil", "Totodile"},
-        {"Treecko", "Torchic", "Mudkip"}
+        {"Treecko", "Torchic", "Mudkip"},
+        {"Sandshrew", "Teddiursa", "Carvanha" }
+
     };
-
-public:
-    StartersRoom();
-
-    /**
-     * Allows the player to choose 3 starters and add them to the pokemon party of the player.
-     * @param engine
-     * @return
-     */
-    RoomEvent runRoom(GameEngine& engine) override;
-
     /**
      * Give the options of starters given the generation of pokemon.
      * The user needs to give in input the index of the starter selected.
@@ -49,5 +40,17 @@ public:
      * @param pokedex
      * @param name
      */
-    static void addStarterToParty(GameEngine& engine, Pokedex* pokedex, const std::string& name);};
+    static void addStarterToParty(GameEngine& engine, Pokedex* pokedex, const std::string& name);
+
+public:
+    StartersRoom();
+
+    /**
+     * Allows the player to choose 3 starters and add them to the pokemon party of the player.
+     * @param engine
+     * @return
+     */
+    RoomEvent runRoom(GameEngine& engine) override;
+
+};
 #endif //TICTACTOE_STARTERSROOM_H

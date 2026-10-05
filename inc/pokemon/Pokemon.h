@@ -64,6 +64,12 @@ public:
      * @param amountToHeal
      */
     void healOf(double amountToHeal);
+
+    /**
+     * Says if the pokemon is dead
+     * @return
+     */
+    bool isPokemonDead() const;
 };
 
 

@@ -22,6 +22,12 @@ class Pokedex : public SetOfPokemon{
     static Pokedex*  getInstance(const string& fileName);
 
     /**
+     * Create a random Pokemon from the pokedex.
+     * @return
+     */
+    Pokemon getRandomPokemon() const;
+
+    /**
      * Create a copy of the pokemon associated to the id given.
      * @param id
      * @return

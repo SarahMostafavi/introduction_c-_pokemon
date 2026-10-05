@@ -8,6 +8,8 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 
 Pokedex* Pokedex::pinstance = nullptr;
 
@@ -48,6 +50,11 @@ Pokedex *Pokedex::getInstance(const string& fileName) {
         pinstance = new Pokedex(fileName);
     }
     return pinstance;
+}
+
+Pokemon Pokedex::getRandomPokemon() const {
+    int randomIndex = rand() % arrayOfPokemon.size();
+    return Pokemon(*arrayOfPokemon.at(randomIndex));
 }
 
 // Ajouter exception si id invalide

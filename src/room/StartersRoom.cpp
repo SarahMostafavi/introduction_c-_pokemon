@@ -14,7 +14,7 @@ using namespace std;
 
 StartersRoom::StartersRoom(){
     std::cout<<"~~~ StartersRoom constructor ~~~"<< std::endl;
-    nameOfStartersSelected.resize(3);
+    nameOfStartersSelected.resize(startersGenArray.size());
 
 }
 

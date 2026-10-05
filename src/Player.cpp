@@ -5,7 +5,7 @@
 #include "../inc/Player.h"
 
 Player::Player(): party(), team() {
-    activePokemon = nullptr;
+    activePokemonPosition = -1;
     numberOfPokeballs = 0;
     numberOfHealPotion = 0;
 }
@@ -18,12 +18,22 @@ PokemonTeam & Player::getTeam() {
     return team;
 }
 
+Pokemon& Player::getActivePokemon() {
+    return *team.getPokemonAtPosition(activePokemonPosition);
+}
+
 int Player::getNumberOfPokeballs() const {
     return numberOfPokeballs;
 }
 
 int Player::getNumberOfHealPotion() const {
     return numberOfHealPotion;
+}
+
+void Player::changeActivePokemonByPokemonAtIndex(int position) {
+    if (team.isPositionValid(position) && !team.getPokemonAtPosition(position)->isPokemonDead()) {
+        activePokemonPosition = position;
+    }
 }
 
 void Player::addAdditionalPokeballs(int numberOfAdditionalPokeballs) {
@@ -34,7 +44,7 @@ void Player::addAdditionalHealPotion(int numberOfAdditionalHealPotion) {
     numberOfHealPotion += numberOfAdditionalHealPotion;
 }
 
-bool Player::isThePokemonCaptured(const Pokemon &opponentPokemon) const {
+bool Player::isThePokeballEfficient(const Pokemon &opponentPokemon) const {
     return (opponentPokemon.getHitPoint() < MAX_HIT_POINTS_FOR_POKEBALL_EFFICIENCY);
 }
 
@@ -42,7 +52,7 @@ bool Player::useOnePokeballOn(const Pokemon &opponentPokemon) {
     if (hasPokeballs()) {
         numberOfPokeballs--;
         std::cout << "Vous utilisez une pokeball sur " << opponentPokemon.getName() <<"." << std::endl;
-        if (isThePokemonCaptured(opponentPokemon)) {
+        if (isThePokeballEfficient(opponentPokemon)) {
             party.addPokemon(opponentPokemon);
             std::cout << "Vous avez capturé " << opponentPokemon.getName() << "." << std::endl;
         }
@@ -59,10 +69,10 @@ bool Player::hasPokeballs() const {
     return (numberOfPokeballs > 0);
 }
 
-bool Player::useHealPotionOn() {
+bool Player::useHealPotion() {
     if (hasHealPotion()) {
         numberOfHealPotion--;
-        activePokemon->healOf(NUMBER_OF_HIT_POINTS_HEALED_BY_POTION);
+        getActivePokemon().healOf(NUMBER_OF_HIT_POINTS_HEALED_BY_POTION);
         return true;
     }
     return false;

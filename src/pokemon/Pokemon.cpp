@@ -86,4 +86,8 @@ void Pokemon::healOf(double amountToHeal) {
     }
 }
 
+bool Pokemon::isPokemonDead() const {
+    return (hitPoint==0);
+}
+
 

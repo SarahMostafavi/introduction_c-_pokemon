@@ -72,6 +72,23 @@ bool PokemonTeam::isPositionValid(int position) {
     return position>=0 && position<6;
 }
 
+bool PokemonTeam::areAllPokemonInTeamDead() const {
+    for (int i = 0; i < 6; ++i) {
+        if (arrayOfPokemon[i] != nullptr && !arrayOfPokemon[i]->isPokemonDead()) {
+            return false;
+        }
+    }
+    return true;           }
+
+void PokemonTeam::healAllPokemon() const {
+    for (Pokemon* pokemon : arrayOfPokemon) {
+        if (pokemon != nullptr) {
+            pokemon->healOf(pokemon->getHitPointMax());
+        }
+    }
+    InfoConsolePokemon::healAllPokemonOfTheTeam();
+}
+
 void PokemonTeam::displayInfoTeam() const {
     int position = 0;
     for (const Pokemon* pokemon : arrayOfPokemon) {

@@ -16,7 +16,7 @@ class Player {
     private:
     PokemonParty party;
     PokemonTeam team;
-    Pokemon* activePokemon;
+    int activePokemonPosition = -1;
     int numberOfPokeballs;
     int numberOfHealPotion;
     const int MAX_HIT_POINTS_FOR_POKEBALL_EFFICIENCY = 20;
@@ -27,8 +27,16 @@ class Player {
 
     PokemonParty& getParty();
     PokemonTeam& getTeam();
+    Pokemon& getActivePokemon();
     int getNumberOfPokeballs() const;
     int getNumberOfHealPotion() const;
+
+    /**
+     * Change the active by the pokemon at position in the team.
+     * Can be changed only if the position is valid and if the pokemon at position is not dead.
+     * @param position
+     */
+    void changeActivePokemonByPokemonAtIndex(int position);
 
     /**
      * Give numberOfPokeballs additional pokeballs to the player
@@ -43,11 +51,11 @@ class Player {
     void addAdditionalHealPotion(int numberOfHealPotion);
 
     /**
-     * Capture the pokemon if the pokeball is efficient and add it to the party.
+     * Says if the pokeball is efficient.
      * @param opponentPokemon
-     * @return true if the pokemon is captured, false otherwise
+     * @return true if the pokemon is efficient, false otherwise
      */
-    bool isThePokemonCaptured(const Pokemon &opponentPokemon) const;
+    bool isThePokeballEfficient(const Pokemon &opponentPokemon) const;
 
     /**
      * Use a pokeball on the opponent pokemon and capture the pokemon
@@ -67,7 +75,7 @@ class Player {
      * Use one heal potion on the active pokemon.
      * @return if a heal potion is used or not
      */
-    bool useHealPotionOn();
+    bool useHealPotion();
 
     /**
      * Says if the player has an heal potion.

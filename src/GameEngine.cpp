@@ -8,6 +8,7 @@
 #include "../inc/room/MenuRoom.h"
 #include "../inc/room/StartersRoom.h"
 #include "../inc/room/CenterRoom.h"
+#include "../inc/room/ExplorationRoom.h"
 
 Room * GameEngine::decideNextRoom(RoomEvent event) {
     switch (event) {
@@ -21,10 +22,7 @@ Room * GameEngine::decideNextRoom(RoomEvent event) {
             return new CenterRoom();
         case RoomEvent::START_EXPLORATION:
             std::cout<<"~~~ Starts Exploration ~~~"<<std::endl;
-            return nullptr;
-        case RoomEvent::START_ARENA:
-            std::cout<<"~~~ Starts Arena ~~~"<<std::endl;
-            return nullptr;
+            return new ExplorationRoom();
         default:
             return nullptr;
     }

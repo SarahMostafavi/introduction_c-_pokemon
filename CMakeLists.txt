@@ -34,6 +34,10 @@ add_executable(tictactoe
         inc/room/InfoConsoleRoom.h
         src/room/CenterRoom.cpp
         inc/room/CenterRoom.h
+        src/room/ExplorationRoom.cpp
+        inc/room/ExplorationRoom.h
+        src/Battle.cpp
+        inc/Battle.h
 )
 
 target_link_libraries(tictactoe

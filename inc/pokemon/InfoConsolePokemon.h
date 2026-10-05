@@ -86,6 +86,11 @@ public:
      * @param positionInParty
      */
     static void displayPokemonAtPositionInThePartyInfo(const Pokemon *pokemon, int positionInParty);
+
+    /**
+     * Heal all pokemons of the team
+     */
+    static void healAllPokemonOfTheTeam();
 };
 
 

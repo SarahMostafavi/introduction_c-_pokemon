@@ -108,8 +108,6 @@ RoomEvent CenterRoom::doActionInCenterRoom(GameEngine& engine, int indexActionTo
             return RoomEvent::ENTER_CENTER;
         case 4:
             return RoomEvent::START_EXPLORATION;
-        case 5:
-            return RoomEvent::START_ARENA;
         default:
             return RoomEvent::ENTER_CENTER;
     }
@@ -117,11 +115,12 @@ RoomEvent CenterRoom::doActionInCenterRoom(GameEngine& engine, int indexActionTo
 }
 
 RoomEvent CenterRoom::runRoom(GameEngine &engine) {
+    engine.getPlayer().getTeam().healAllPokemon();
     int userInput;
     InfoConsoleRoom::displayCenterRoomWelcomeMessage();
     while (true) {
         cin >> userInput;
-        if (cin.fail() || userInput<1 || userInput>5) {
+        if (cin.fail() || userInput<1 || userInput>4) {
             cin.clear();
             cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
             InfoConsoleRoom::displayCenterRoomWelcomeMessage();

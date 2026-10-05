@@ -36,7 +36,7 @@ class PokemonTeam : public SetOfPokemon{
      * @param pokemon
      * @param pokemonParty
      */
-    static void sendPokemonToPokemonParty(const Pokemon &pokemon, PokemonParty& pokemonParty);
+    void sendPokemonToPokemonParty(const Pokemon &pokemon, PokemonParty& pokemonParty);
 
     /**
      * Get the pokemon from the team of 6 pokemons if the id given is in the team.
@@ -65,6 +65,17 @@ class PokemonTeam : public SetOfPokemon{
      * @return
      */
     static bool isPositionValid(int position);
+
+    /**
+     * Says if all pokemons in the team are dead.
+     * @return
+     */
+    bool areAllPokemonInTeamDead() const;
+
+    /**
+     * Heal all pokemon in the team
+     */
+    void healAllPokemon() const;
 
     /**
      * Display the information of each pokemon in the team
